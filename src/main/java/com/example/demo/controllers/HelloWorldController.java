@@ -43,5 +43,29 @@ public class HelloWorldController {
 		mv.addObject("message", whisperer.whisper());
 		return mv;
 	}
+	
+	@GetMapping("say-something")
+	public ModelAndView makeAChoice(
+			String speechChoice,
+			String message
+			)	{
+		ModelAndView mv = new ModelAndView("helloworld/mixed-messages");
+		mv.addObject("title", title);
+		
+		//if speechChoice is loud
+		if (speechChoice.equals("loud"))	{
+			//make message LOUD
+			Yeller yeller = new Yeller(message);
+			mv.addObject("output", yeller.yell());
+		}
+		//otherwise
+		else {
+			//make message quiet
+			Whisperer whisperer = new Whisperer(message);
+			mv.addObject("output", whisperer.whisper());
+		}
+
+		return mv;
+	}
 	 
 }
