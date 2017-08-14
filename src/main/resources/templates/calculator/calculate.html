@@ -8,5 +8,9 @@
     {{> calculator/calculator-form }}
     <h2>Result:</h2>
     {{ result }}
+	<h2>History:</h2>
+    {{#history}}
+    	{{entryDetail}}<br>
+    {{/history}}
   </body>
 </html>
